@@ -1,13 +1,17 @@
 {
-  "name": "http-api-ts-lite",
+  "name": "wik_tp_api",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
   "author": "Ayoub",
   "type": "module",
-  "main": "index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
   "scripts": {
-    "start": "npx tsx index.ts"
+    "dev": "tsx index.ts",
+    "build": "pkgroll",
+    "start": "node dist/index.cjs"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
@@ -16,7 +20,18 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.14",
+    "pkgroll": "^2.12.1",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2"
+  },
+  "exports": {
+    "require": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    },
+    "import": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
   }
 }
