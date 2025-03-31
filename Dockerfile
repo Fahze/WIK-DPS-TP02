@@ -1,6 +1,8 @@
 # Base 
+FROM node:23.9-alpine3.21 AS base
 
-FROM node:20-alpine AS base
+# Build 
+FROM base AS build
 
 WORKDIR /app
 
@@ -10,25 +12,20 @@ RUN npm i
 
 COPY . .
 
-# Build 
-FROM base AS build
-
-WORKDIR /app
-
 RUN npm run build
 
 # Run
 
-FROM node:23.9-alpine3.21
+FROM base AS run
 
 WORKDIR /app
 
-COPY --from=build /app/node_modules ./node_modules
-
 ENV NODE_ENV=production
 
-USER node
+COPY --from=build /app/node_modules ./node_modules
 
 COPY --from=build /app/dist ./dist
+
+USER node
 
 CMD ["node", "dist/index.cjs"]
