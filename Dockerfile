@@ -19,9 +19,11 @@ RUN npm run build
 
 # Run
 
-FROM base AS production
+FROM node:23.9-alpine3.21
 
 WORKDIR /app
+
+COPY --from=build /app/node_modules ./node_modules
 
 ENV NODE_ENV=production
 
