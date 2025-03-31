@@ -1,0 +1,22 @@
+{
+  "name": "http-api-ts-lite",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Ayoub",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsx index.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.14",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}
