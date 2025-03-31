@@ -25,6 +25,8 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
+USER node
+
 COPY --from=build /app/dist ./dist
 
 CMD ["node", "dist/index.cjs"]
